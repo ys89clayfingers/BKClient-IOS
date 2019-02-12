@@ -1,0 +1,6 @@
+framework module bkclient_ios {
+  umbrella header "bkclient-ios-umbrella.h"
+
+  export *
+  module * { export * }
+}

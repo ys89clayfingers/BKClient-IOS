@@ -1,0 +1,22 @@
+PODS:
+  - bkclient-ios (0.1.0)
+  - Nimble (7.0.3)
+  - Quick (1.2.0)
+
+DEPENDENCIES:
+  - bkclient-ios (from `../`)
+  - Nimble (~> 7.0.2)
+  - Quick (~> 1.2.0)
+
+EXTERNAL SOURCES:
+  bkclient-ios:
+    :path: ../
+
+SPEC CHECKSUMS:
+  bkclient-ios: e9acfd032ca3463f36c0c3f77575b6d0ee7466d8
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+
+PODFILE CHECKSUM: b7b2450a7e4b5a61014b7884b5f27686c4c81e17
+
+COCOAPODS: 1.4.0
