@@ -27,7 +27,7 @@ public class ByteArrayPacket : Packet {
     
     init(buffer:[UInt8])
     {
-        var flag:UInt16 = byteArrayBigEndianToShort(data:buffer, offset:Constants.FLAG_OFFSET);
+        let flag:UInt16 = byteArrayBigEndianToShort(data:buffer, offset:Constants.FLAG_OFFSET);
         finalFlag = flag & Constants.PACKET_OPTION_FINAL == Constants.PACKET_OPTION_FINAL;
         size = byteArrayBigEndianToShort(data:buffer, offset:Constants.PAYLOAD_SIZE_OFFSET);
         
