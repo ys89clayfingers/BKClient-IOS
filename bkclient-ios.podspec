@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'bkclient-ios'
-    s.version          = '0.1.0'
+    s.version          = '0.1.1'
     s.summary          = 'bkclient ios'
     
     # This description is used to generate tags and improve search results.
@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
     DESC
     
     s.dependency 'BlueSocket'
+    s.dependency 'SwiftyJSON'
     s.homepage         = 'https://github.com/ys89clayfingers/BKClient-IOS'
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }

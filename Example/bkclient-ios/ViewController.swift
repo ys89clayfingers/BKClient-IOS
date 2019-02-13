@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import bkclient_ios
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let chainner = Chainer();
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
 }
-

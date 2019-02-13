@@ -6,6 +6,9 @@
   "dependencies": {
     "BlueSocket": [
 
+    ],
+    "SwiftyJSON": [
+
     ]
   },
   "homepage": "https://github.com/ys89clayfingers/BKClient-IOS",

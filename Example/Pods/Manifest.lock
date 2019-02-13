@@ -1,7 +1,11 @@
 PODS:
-  - bkclient-ios (0.1.0)
+  - bkclient-ios (0.1.0):
+    - BlueSocket
+    - SwiftyJSON
+  - BlueSocket (1.0.8)
   - Nimble (7.0.3)
   - Quick (1.2.0)
+  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - bkclient-ios (from `../`)
@@ -13,10 +17,12 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  bkclient-ios: e9acfd032ca3463f36c0c3f77575b6d0ee7466d8
+  bkclient-ios: d130c08391b2a8ffdd12bc354ac45bebf9100442
+  BlueSocket: 763db95b6002c0e7dec8eb0c27bc628ca95296d1
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: b7b2450a7e4b5a61014b7884b5f27686c4c81e17
+PODFILE CHECKSUM: 58718b85310b92bb95167781321082f82a373b92
 
 COCOAPODS: 1.4.0
