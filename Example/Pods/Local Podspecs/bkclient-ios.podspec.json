@@ -1,9 +1,14 @@
 {
   "name": "bkclient-ios",
   "version": "0.1.0",
-  "summary": "A short description of bkclient-ios.",
+  "summary": "bkclient ios",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/bunker.ys89@gmail.com/bkclient-ios",
+  "dependencies": {
+    "BlueSocket": [
+
+    ]
+  },
+  "homepage": "https://github.com/ys89clayfingers/BKClient-IOS",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +17,12 @@
     "bunker.ys89@gmail.com": "ys89@clay-fingers.com"
   },
   "source": {
-    "git": "https://github.com/bunker.ys89@gmail.com/bkclient-ios.git",
+    "git": "https://github.com/ys89clayfingers/BKClient-IOS.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.0"
   },
+  "swift_version": "4.0",
   "source_files": "bkclient-ios/Classes/**/*"
 }
