@@ -2,7 +2,7 @@
 
 import Quick
 import Nimble
-import bkclient-ios
+import bkclient_ios
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
