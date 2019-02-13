@@ -58,7 +58,6 @@ public class WorkLink : NetLink {
         
         do {
             let jsonString = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted);
-            let json = JSON(jsonString);
             connection.sendToPeer([UInt8](String(data:jsonString, encoding:String.Encoding.utf8)!.utf8))
         } catch {
             bkLogging("WorkLinkErr:chainning json err");
