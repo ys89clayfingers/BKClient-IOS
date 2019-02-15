@@ -44,7 +44,7 @@ public class Chainer : OnResultCallback {
         self.connectionOriented = connectionOriented;
     }
     
-    func startNet(network:Network)
+    public func startNet(network:Network)
     {
         self.network = network;
         if chains.count == 0 {
@@ -52,10 +52,9 @@ public class Chainer : OnResultCallback {
         }
         setChain();
         network.start();
-        
     }
     
-    func addChain(link:NetLink)
+    public func addChain(link:NetLink)
     {
         chains.append(link);
         if dummyHandling {
@@ -64,7 +63,7 @@ public class Chainer : OnResultCallback {
         }
     }
     
-    func result(res:Bool)
+    public func result(res:Bool)
     {
         if res {
             setNextChain();

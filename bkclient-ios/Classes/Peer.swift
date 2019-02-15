@@ -9,35 +9,35 @@
 import Foundation
 import Socket
 
-protocol PeerConnection {
+public protocol PeerConnection {
     func sendToPeer(_ data:[UInt8]);
     func closePeer();
     func getEnviroment() -> [String:Any];
 }
 
-protocol Business : Receiver {
+public protocol Business : Receiver {
     func established(connection:PeerConnection);
     func removeBusinessData(connection:PeerConnection);
 }
 
-protocol Writer {
+public protocol Writer {
     func write(_ data:[UInt8]);
 }
 
-protocol Reader {
+public protocol Reader {
     func read() -> [UInt8];
     func read(count: Int) -> [UInt8];
 }
 
-protocol IO : Writer, Reader, PeerConnection {
+public protocol IO : Writer, Reader, PeerConnection {
     func avaliable() -> Int;
 }
 
-protocol Receiver {
+public protocol Receiver {
     func receive(connection:PeerConnection, data:[UInt8], sequence:Int);
 }
 
-protocol Peer : IO {
+public protocol Peer : IO {
 }
 
 let secDispathQueue = DispatchQueue(label: "secSSL");
@@ -122,7 +122,7 @@ public class PeerNIOClient : Peer, HandshakeCallback {
         }
     }
     
-    func closePeer()
+    public func closePeer()
     {
         client?.close();
         if sec != nil {
@@ -135,13 +135,12 @@ public class PeerNIOClient : Peer, HandshakeCallback {
         business.removeBusinessData(connection: self)
     }
     
-    func getEnviroment() -> [String:Any]
+    public func getEnviroment() -> [String:Any]
     {
         return enviroment;
     }
     
-    private func bindPacket() -> [UInt8]
-    {
+    private func bindPacket() -> [UInt8] {
         var binded:[UInt8] = [];
         if packets.count <= 0 {
             return binded;
@@ -161,15 +160,13 @@ public class PeerNIOClient : Peer, HandshakeCallback {
         return binded;
     }
     
-    private func dispatch(_ data:[UInt8]) -> Packet
-    {
+    private func dispatch(_ data:[UInt8]) -> Packet {
         let packet = ByteArrayPacket(buffer:data);
         packets.append(packet);
         return packet;
     }
     
-    public func send(_ data:[UInt8])
-    {
+    public func send(_ data:[UInt8]) {
         let wrapper = ByteArrayPacketWrapper(src:data);
         while wrapper.hasNext() {
             let packetWrapped = wrapper.next()!;
@@ -189,12 +186,12 @@ public class PeerNIOClient : Peer, HandshakeCallback {
         }
     }
     
-    func write(_ data:[UInt8])
+    public func write(_ data:[UInt8])
     {
         send(data);
     }
     
-    func read() -> [UInt8] {
+    public func read() -> [UInt8] {
         var loopGaurd = 20;
         var accumulated: [UInt8] = [];
         while true {
@@ -247,7 +244,7 @@ public class PeerNIOClient : Peer, HandshakeCallback {
         return nil;
     }
     
-    func read(count: Int) -> [UInt8] {
+    public func read(count: Int) -> [UInt8] {
         if bindedBuffer == nil {
             bindedBuffer = read();
         }
@@ -263,7 +260,7 @@ public class PeerNIOClient : Peer, HandshakeCallback {
         return Array(ret);
     }
     
-    func sendToPeer(_ data:[UInt8]) {
+    public func sendToPeer(_ data:[UInt8]) {
         if sec != nil {
             sec!.write(data);
         } else {
@@ -295,7 +292,7 @@ public class PeerNIOClient : Peer, HandshakeCallback {
         handShakeCallback?.handshaked();
     }
     
-    func avaliable() -> Int {
+    public func avaliable() -> Int {
         if bindedBuffer == nil {
             return 0;
         }

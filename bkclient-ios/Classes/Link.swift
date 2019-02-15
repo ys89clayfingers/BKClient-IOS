@@ -18,25 +18,29 @@ public protocol JSONAdapter {
 public class JSONAdapterLink : WorkLink {
     let adapter:JSONAdapter;
     
-    init(adapter: JSONAdapter) {
+    public init(adapter: JSONAdapter) {
         self.adapter = adapter;
     }
     
-    override func getJSONDic() -> [String : Any] {
+    public override func getJSONDic() -> [String : Any] {
         return adapter.getJSONDic();
     }
     
-    override func getWorking() -> String {
+    public override func getWorking() -> String {
         return adapter.getWorking();
     }
     
-    override func receiveJSON(jsonDic: [String : Any], result: Bool) {
+    public override func receiveJSON(jsonDic: [String : Any], result: Bool) {
         adapter.receiveJSON(jsonDic: jsonDic);
     }
 }
 
-public class WorkLink : NetLink {
-    final override func receive(connection: PeerConnection, data: [UInt8], sequence: Int) {
+open class WorkLink : NetLink {
+    public override init() {
+        super.init();
+    }
+    
+    final override public func receive(connection: PeerConnection, data: [UInt8], sequence: Int) {
         let string = String(bytes:data, encoding:.utf8)!;
         let data = string.data(using: .utf8)!;
         do {
@@ -52,7 +56,7 @@ public class WorkLink : NetLink {
         }
     }
     
-    final override func chainning(connection: PeerConnection, _ sequence: Int) {
+    final override public func chainning(connection: PeerConnection, _ sequence: Int) {
         var dic = getJSONDic();
         dic[BK_WORKING] = getWorking();
         
@@ -65,23 +69,27 @@ public class WorkLink : NetLink {
         }
     }
     
-    func receiveJSON(jsonDic:[String:Any], result:Bool) {
+    open func receiveJSON(jsonDic:[String:Any], result:Bool) {
     }
     
-    func getWorking() -> String {
+    open func getWorking() -> String {
         return "";
     }
     
-    func getJSONDic() -> [String:Any] {
+    open func getJSONDic() -> [String:Any] {
         return ["err":0];
     }
 }
 
-public class NetLink : NetHandle {
+open class NetLink : NetHandle {
     var callback: OnResultCallback?;
     var linkCallback: OnLinkCallback?;
     var linkCallbackName: String?;
     var isHandling:Bool = false;
+    
+    public init() {
+        
+    }
     
     func setOnResultCallback(callback:OnResultCallback) {
         self.callback = callback;
@@ -104,17 +112,20 @@ public class NetLink : NetHandle {
         isHandling = false;
     }
     
-    func receive(connection:PeerConnection, data:[UInt8], sequence:Int)
+    open func receive(connection:PeerConnection, data:[UInt8], sequence:Int)
     {
         
     }
     
-    func chainning(connection:PeerConnection, _ sequence:Int)
+    public func chainning(connection:PeerConnection, _ sequence:Int)
     {
         
     }
     
-    func broken()
+    open func test(ttt: PeerConnection) {
+    }
+    
+    public func broken()
     {
         if (callback != nil && isHandling) {
             callback!.result(res:false);
