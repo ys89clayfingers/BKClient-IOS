@@ -12,7 +12,7 @@ public protocol OnResultCallback {
     func result(res:Bool);
 }
 
-protocol OnLinkCallback {
+public protocol OnLinkCallback {
     func finished(result: Bool, name: String, link: NetLink);
 }
 

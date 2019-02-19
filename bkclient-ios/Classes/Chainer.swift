@@ -18,34 +18,28 @@ public class Chainer : OnResultCallback {
     
     private class DummyLink : NetLink {
         var chainer:Chainer;
-        init(_ chainer:Chainer)
-        {
+        init(_ chainer:Chainer) {
             self.chainer = chainer;
         }
         
-        override func receive(connection:PeerConnection, data:[UInt8], sequence:Int)
-        {
+        override func receive(connection:PeerConnection, data:[UInt8], sequence:Int) {
         }
         
-        override func chainning(connection:PeerConnection, _ sequence:Int)
-        {
+        override func chainning(connection:PeerConnection, _ sequence:Int) {
             chainer.dummyHandling = true;
         }
     };
     
-    public init()
-    {
+    public init() {
         dummy = DummyLink(self);
     }
     
-    convenience public init(connectionOriented:Bool)
-    {
+    convenience public init(connectionOriented:Bool) {
         self.init();
         self.connectionOriented = connectionOriented;
     }
     
-    public func startNet(network:Network)
-    {
+    public func startNet(network:Network) {
         self.network = network;
         if chains.count == 0 {
             chains.append(dummy!);
@@ -54,8 +48,7 @@ public class Chainer : OnResultCallback {
         network.start();
     }
     
-    public func addChain(link:NetLink)
-    {
+    public func addChain(link:NetLink) {
         chains.append(link);
         if dummyHandling {
             dummyHandling = false;

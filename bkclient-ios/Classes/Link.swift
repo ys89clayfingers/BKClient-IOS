@@ -88,14 +88,13 @@ open class NetLink : NetHandle {
     var isHandling:Bool = false;
     
     public init() {
-        
     }
     
     func setOnResultCallback(callback:OnResultCallback) {
         self.callback = callback;
     }
     
-    func setOnLinkCallback(callback: OnLinkCallback, callbackName: String) {
+    public func setOnLinkCallback(callback: OnLinkCallback, callbackName: String) {
         self.linkCallback = callback;
         self.linkCallbackName = callbackName;
     }
@@ -112,8 +111,7 @@ open class NetLink : NetHandle {
         isHandling = false;
     }
     
-    open func receive(connection:PeerConnection, data:[UInt8], sequence:Int)
-    {
+    open func receive(connection:PeerConnection, data:[UInt8], sequence:Int) {
         
     }
     
